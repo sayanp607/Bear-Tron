@@ -11,9 +11,12 @@ const _geist = Geist({ subsets: ["latin"] });
 const _geistMono = Geist_Mono({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'BearTron - Funded Trading Challenge Platform',
+  description: 'Prove your trading skills and get funded. Join BearTron for realistic trading challenges with quick payouts and real-time monitoring.',
+  generator: 'BearTron',
+  icons: {
+    icon: '/favicon.ico',
+  },
 }
 
 export default function RootLayout({

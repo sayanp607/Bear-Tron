@@ -36,7 +36,7 @@ export default function Header() {
 
         {/* Desktop Navigation Links */}
         <div className="hidden lg:flex gap-8">
-          <Link href="#home" className="text-sm font-medium hover:text-primary transition-colors">
+          <Link href="/" className="text-sm font-medium hover:text-primary transition-colors">
             {t.nav.home}
           </Link>
           <Link href="#terms" className="text-sm font-medium hover:text-primary transition-colors">
@@ -105,7 +105,7 @@ export default function Header() {
           <div className="px-4 py-4 space-y-3">
             {/* Navigation Links */}
             <Link
-              href="#home"
+              href="/"
               className="block py-2 text-sm font-medium hover:text-primary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
