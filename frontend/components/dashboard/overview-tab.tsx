@@ -1,8 +1,17 @@
 "use client"
 
+import { useRouter } from "next/navigation"
 import { Card } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Plus } from "lucide-react"
 
 export default function OverviewTab() {
+  const router = useRouter()
+
+  const handleBuyChallenge = () => {
+    router.push("/new-challenge")
+  }
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row justify-between md:items-center gap-4">
@@ -11,6 +20,13 @@ export default function OverviewTab() {
           <p className="text-muted-foreground">Welcome back to your trading dashboard</p>
         </div>
         <div className="inline-flex gap-2">
+          <Button 
+            onClick={handleBuyChallenge}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2"
+          >
+            <Plus className="h-4 w-4 mr-2" />
+            Buy Challenge
+          </Button>
           <button className="px-4 py-2 border border-border rounded-lg hover:bg-muted">All Types ▼</button>
           <button className="px-4 py-2 border border-border rounded-lg hover:bg-muted">All Phases ▼</button>
         </div>
