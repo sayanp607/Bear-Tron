@@ -256,14 +256,14 @@ export default function NewChallengePage() {
                 <p className="text-sm text-muted-foreground mb-4">Choose the type of challenge you want to take</p>
                 <RadioGroup value={selectedStep} onValueChange={(val) => setSelectedStep(val as "1step" | "2step")}>
                   <div className="grid grid-cols-2 gap-4">
-                    <label className={`flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedStep === "1step" ? "border-blue-500 bg-blue-50 dark:bg-blue-950/20" : "border-border"}`}>
+                    <label className={`flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedStep === "1step" ? "border-primary bg-primary/5 dark:bg-primary/10" : "border-border"}`}>
                       <RadioGroupItem value="1step" id="1step" />
                       <div>
                         <div className="font-medium">One Step</div>
                         <div className="text-sm text-muted-foreground">10% Profit Target</div>
                       </div>
                     </label>
-                    <label className={`flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedStep === "2step" ? "border-blue-500 bg-blue-50 dark:bg-blue-950/20" : "border-border"}`}>
+                    <label className={`flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedStep === "2step" ? "border-primary bg-primary/5 dark:bg-primary/10" : "border-border"}`}>
                       <RadioGroupItem value="2step" id="2step" />
                       <div>
                         <div className="font-medium">Two Step</div>
@@ -278,9 +278,9 @@ export default function NewChallengePage() {
               <Card className="p-6">
                 <h2 className="text-xl font-semibold mb-2">Model</h2>
                 <p className="text-sm text-muted-foreground mb-4">Choose the trading model</p>
-                <div className="border-2 border-blue-500 bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4">
+                <div className="border-2 border-primary bg-primary/5 dark:bg-primary/10 rounded-lg p-4">
                   <div className="flex items-center space-x-3">
-                    <div className="h-4 w-4 rounded-full bg-blue-500"></div>
+                    <div className="h-4 w-4 rounded-full bg-primary"></div>
                     <div className="font-medium">BearTron</div>
                   </div>
                 </div>
@@ -295,7 +295,7 @@ export default function NewChallengePage() {
                     {accountSizes.map((size) => (
                       <label
                         key={size.value}
-                        className={`flex items-center justify-center border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedSize === size.value ? "border-blue-500 bg-blue-50 dark:bg-blue-950/20" : "border-border"}`}
+                        className={`flex items-center justify-center border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedSize === size.value ? "border-primary bg-primary/5 dark:bg-primary/10" : "border-border"}`}
                       >
                         <RadioGroupItem value={size.value} id={size.value} className="sr-only" />
                         <div className="text-center">
@@ -316,7 +316,7 @@ export default function NewChallengePage() {
                     {platforms.map((platform) => (
                       <label
                         key={platform.value}
-                        className={`flex items-center justify-center border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedPlatform === platform.value ? "border-blue-500 bg-blue-50 dark:bg-blue-950/20" : "border-border"}`}
+                        className={`flex items-center justify-center border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedPlatform === platform.value ? "border-primary bg-primary/5 dark:bg-primary/10" : "border-border"}`}
                       >
                         <RadioGroupItem value={platform.value} id={platform.value} className="sr-only" />
                         <div className="text-center">
@@ -449,10 +449,10 @@ export default function NewChallengePage() {
 
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-lg font-semibold">Total</span>
-                  <span className="text-3xl font-bold text-blue-600">₹{(totalPrice / 1000).toFixed(1)}k</span>
+                  <span className="text-3xl font-bold text-primary">₹{(totalPrice / 1000).toFixed(1)}k</span>
                 </div>
 
-                <div className="bg-blue-50 dark:bg-blue-950/20 rounded-lg p-4 mb-6">
+                <div className="bg-primary/5 dark:bg-primary/10 rounded-lg p-4 mb-6">
                   <div className="flex items-start space-x-2">
                     <Checkbox
                       id="terms"
@@ -475,7 +475,7 @@ export default function NewChallengePage() {
 
                 <Button
                   size="lg"
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground"
                   disabled={!agreedToTerms || !isBillingComplete || processing}
                   onClick={handlePayment}
                 >

@@ -129,7 +129,7 @@ export default function ChallengeEvaluator() {
             onClick={() => setSelectedStep("1step")}
             className={`px-4 sm:px-6 md:px-8 py-2 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all ${
               selectedStep === "1step"
-                ? "bg-blue-600 text-white"
+                ? "bg-primary text-primary-foreground"
                 : "bg-card text-muted-foreground hover:bg-card/80"
             }`}
           >
@@ -139,7 +139,7 @@ export default function ChallengeEvaluator() {
             onClick={() => setSelectedStep("2step")}
             className={`px-8 py-3 rounded-full font-semibold transition-all ${
               selectedStep === "2step"
-                ? "bg-blue-600 text-white"
+                ? "bg-primary text-primary-foreground"
                 : "bg-card text-muted-foreground hover:bg-card/80"
             }`}
           >
@@ -155,7 +155,7 @@ export default function ChallengeEvaluator() {
               onClick={() => setSelectedSize(size.value)}
               className={`px-3 sm:px-4 md:px-6 py-2 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all ${
                 selectedSize === size.value
-                  ? "bg-blue-600 text-white"
+                  ? "bg-primary text-primary-foreground"
                   : "bg-card text-foreground hover:bg-card/80 border border-border"
               }`}
             >
@@ -165,7 +165,7 @@ export default function ChallengeEvaluator() {
         </div>
 
         {/* Evaluation Stage */}
-        <div className="bg-gradient-to-br from-blue-600 via-blue-800 to-black rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
+        <div className="bg-gradient-to-br from-primary via-primary/80 to-black rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 mb-6 sm:mb-8">
           <h3 className="text-white text-center text-base sm:text-lg md:text-xl font-semibold mb-6 sm:mb-8">{t.challenge.evaluationStage}</h3>
 
           <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
@@ -198,7 +198,7 @@ export default function ChallengeEvaluator() {
                 {/* Master Column */}
                 <div className="text-center px-2">
                   <div className="mb-2 sm:mb-4">
-                    <div className="inline-flex h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-white/20 text-blue-400">
+                    <div className="inline-flex h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-white/20 text-primary-foreground">
                       <Crown className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
                     </div>
                   </div>
@@ -212,7 +212,7 @@ export default function ChallengeEvaluator() {
             <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
               <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
                 <span className="truncate">{t.challenge.profitTarget}</span>
-                <span className="text-blue-300 text-xs hidden sm:inline">ⓘ</span>
+                <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
               </div>
               <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.studentProfit}</div>
               {selectedStep === "2step" && (
@@ -225,7 +225,7 @@ export default function ChallengeEvaluator() {
             <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
               <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
                 <span className="truncate">{t.challenge.maximumLoss}</span>
-                <span className="text-blue-300 text-xs hidden sm:inline">ⓘ</span>
+                <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
               </div>
               <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxLoss}</div>
               {selectedStep === "2step" && (
@@ -238,7 +238,7 @@ export default function ChallengeEvaluator() {
             <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
               <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
                 <span className="truncate">{t.challenge.maximumDailyLoss}</span>
-                <span className="text-blue-300 text-xs hidden sm:inline">ⓘ</span>
+                <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
               </div>
               <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxDailyLoss}</div>
               {selectedStep === "2step" && (
@@ -251,7 +251,7 @@ export default function ChallengeEvaluator() {
             <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
               <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
                 <span className="truncate">{t.challenge.minimumTradingDays}</span>
-                <span className="text-blue-300 text-xs hidden sm:inline">ⓘ</span>
+                <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
               </div>
               <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.minTradingDays}</div>
               {selectedStep === "2step" && (
@@ -273,11 +273,11 @@ export default function ChallengeEvaluator() {
             </div>
             <div className="text-center sm:text-left">
               <span className="text-muted-foreground text-xs sm:text-sm">Price</span>
-              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-600">₹{(currentPrice / 1000).toFixed(1)}k</p>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">₹{(currentPrice / 1000).toFixed(1)}k</p>
             </div>
           </div>
 
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 text-base sm:text-lg w-full sm:w-auto" onClick={handleBuyChallenge}>
+          <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 sm:px-10 md:px-12 py-4 sm:py-5 md:py-6 text-base sm:text-lg w-full sm:w-auto" onClick={handleBuyChallenge}>
             {t.challenge.buyChallenge}
           </Button>
         </div>
@@ -298,10 +298,10 @@ export default function ChallengeEvaluator() {
                 {testimonials.map((testimonial, index) => (
                   <div
                     key={index}
-                    className="snap-center flex-shrink-0 w-80 bg-card border border-border rounded-2xl p-6 hover:border-blue-500/50 hover:shadow-xl hover:shadow-blue-500/10 transition-all duration-300 hover:-translate-y-1"
+                    className="snap-center flex-shrink-0 w-80 bg-card border border-border rounded-2xl p-6 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 hover:-translate-y-1"
                   >
                     <div className="flex items-center gap-4 mb-4">
-                      <Avatar className="h-14 w-14 border-2 border-blue-500/20">
+                      <Avatar className="h-14 w-14 border-2 border-primary/20">
                         <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                         <AvatarFallback>{testimonial.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
                       </Avatar>
@@ -312,7 +312,7 @@ export default function ChallengeEvaluator() {
                     </div>
                     <div className="relative">
                       <svg
-                        className="absolute -top-2 -left-1 h-8 w-8 text-blue-500/20"
+                        className="absolute -top-2 -left-1 h-8 w-8 text-primary/20"
                         fill="currentColor"
                         viewBox="0 0 32 32"
                       >

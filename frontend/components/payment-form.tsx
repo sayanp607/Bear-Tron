@@ -97,8 +97,8 @@ export default function PaymentForm({ packageId }: { packageId: string | null })
             <Input type="tel" placeholder="+91 98765 43210" required />
           </div>
 
-          <div className="bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 p-4 rounded-lg">
-            <p className="text-sm text-blue-900 dark:text-blue-200">
+          <div className="bg-primary/5 dark:bg-primary/10 border border-primary/20 dark:border-primary/30 p-4 rounded-lg">
+            <p className="text-sm text-primary dark:text-primary-foreground">
               💳 Payment will be processed securely using industry-standard encryption. After successful payment, you'll
               be redirected to your trading dashboard.
             </p>

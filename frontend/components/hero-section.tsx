@@ -31,7 +31,7 @@ export default function HeroSection() {
   return (
     <section className="relative overflow-hidden py-20 sm:py-32">
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-blue-500/10 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/10 to-transparent pointer-events-none" />
 
       <div className="relative mx-auto max-w-6xl px-6">
         {/* Hero Content */}
@@ -67,23 +67,23 @@ export default function HeroSection() {
               return (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20 hover:-translate-y-2 hover:scale-105 cursor-pointer"
+                  className="group relative overflow-hidden rounded-2xl border border-border bg-card p-8 transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/20 hover:-translate-y-2 hover:scale-105 cursor-pointer"
                 >
                   {/* Icon */}
                   <div className="mb-6">
-                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-blue-500/10 text-blue-500 transition-all duration-300 group-hover:bg-blue-500 group-hover:text-white group-hover:scale-110 group-hover:rotate-6">
+                    <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-primary/10 text-primary transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-110 group-hover:rotate-6">
                       <Icon className="h-7 w-7 transition-transform duration-300 group-hover:scale-110" />
                     </div>
                   </div>
 
                   {/* Content */}
                   <div className="transition-transform duration-300 group-hover:translate-x-1">
-                    <h3 className="text-lg font-bold text-blue-500 mb-2 transition-colors duration-300 group-hover:text-blue-400">{feature.title}</h3>
+                    <h3 className="text-lg font-bold text-primary mb-2 transition-colors duration-300 group-hover:text-primary/80">{feature.title}</h3>
                     <p className="text-base font-semibold text-foreground transition-colors duration-300 group-hover:text-green-700">{feature.description}</p>
                   </div>
 
                   {/* Hover gradient effect */}
-                  <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-500/10 to-purple-500/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                  <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/10 to-primary/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   
                   {/* Shine effect on hover */}
                   <div className="absolute inset-0 -z-10 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />

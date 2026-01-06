@@ -17,7 +17,7 @@ export default function FAQSection() {
     <div className="container mx-auto px-4 py-20 max-w-4xl">
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <HelpCircle className="h-10 w-10 text-blue-500" />
+          <HelpCircle className="h-10 w-10 text-primary" />
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             {t.faq.title}
           </h2>

@@ -28,7 +28,7 @@ export default function Header() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-lg sm:text-xl">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-blue-500 to-blue-600">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/80">
             <span className="text-white font-bold">B</span>
           </div>
           <span className="hidden sm:inline">BearTron</span>

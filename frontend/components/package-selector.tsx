@@ -106,7 +106,7 @@ export default function PackageSelector({
             >
               {pkg.popular && (
                 <div className="mb-4">
-                  <Badge className="bg-blue-500">Most Popular</Badge>
+                  <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
                 </div>
               )}
 
@@ -183,7 +183,7 @@ export default function PackageSelector({
 
       {/* CTA Section */}
       {selectedPackage && (
-        <Card className="p-8 bg-gradient-to-r from-blue-500/10 to-purple-500/10 border-2 border-primary/30">
+        <Card className="p-8 bg-gradient-to-r from-primary/10 to-primary/20 border-2 border-primary/30">
           <div className="flex flex-col md:flex-row items-center justify-between gap-6">
             <div>
               <h3 className="text-2xl font-bold mb-2">Ready to get funded?</h3>

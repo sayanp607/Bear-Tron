@@ -52,7 +52,7 @@ export default function LanguageSelector() {
             className="flex items-center justify-between cursor-pointer"
           >
             <span>{language.nativeName}</span>
-            {selectedLanguage === language.code && <Check className="h-4 w-4 text-blue-600" />}
+            {selectedLanguage === language.code && <Check className="h-4 w-4 text-primary" />}
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
