@@ -17,11 +17,13 @@ export default function ChallengeEvaluator() {
   const { t } = useTranslation()
 
   const accountSizes = [
-    { value: "1l", label: "₹1L", amount: 100000, price2step: 2000, price1step: 2500 },
-    { value: "2l", label: "₹2L", amount: 200000, price2step: 3700, price1step: 4200 },
-    { value: "5l", label: "₹5L", amount: 500000, price2step: 7900, price1step: 8400 },
-    { value: "10l", label: "₹10L", amount: 1000000, price2step: 14500, price1step: 15000 },
-    { value: "20l", label: "₹20L", amount: 2000000, price2step: 26000, price1step: 26500 },
+    { value: "50k", label: "₹50k", amount: 50000, price2step: 1700, price1step: 2500 },
+    { value: "1l", label: "₹1L", amount: 100000, price2step: 3000, price1step: 4250 },
+    { value: "2l", label: "₹2L", amount: 200000, price2step: 5800, price1step: 8000 },
+    { value: "5l", label: "₹5L", amount: 500000, price2step: 14000, price1step: 19500 },
+    { value: "10l", label: "₹10L", amount: 1000000, price2step: 28000, price1step: 36000 },
+    { value: "25l", label: "₹25L", amount: 2500000, price2step: 58000, price1step: 86000 },
+    { value: "50l", label: "₹50L", amount: 5000000, price2step: 125000, price1step: 160000 },
   ]
 
   const selectedAccount = accountSizes.find((acc) => acc.value === selectedSize)
@@ -36,15 +38,20 @@ export default function ChallengeEvaluator() {
   }
 
   // Calculate profit targets based on selected step
-  const studentProfit = selectedAccount ? selectedAccount.amount * (selectedStep === "2step" ? 0.08 : 0.1) : 10000
-  const practitionerProfit = selectedAccount ? selectedAccount.amount * 0.05 : 5000
+  const noviceProfit = selectedAccount ? selectedAccount.amount * 0.1 : 10000
+  const expertProfit = selectedAccount ? selectedAccount.amount * 0.08 : 8000
 
   const evaluationData = {
-    studentProfit: `₹${studentProfit.toLocaleString('en-IN')} (${selectedStep === "2step" ? "8%" : "10%"})`,
-    practitionerProfit: `₹${practitionerProfit.toLocaleString('en-IN')} (5%)`,
-    maxLoss: "10%",
-    maxDailyLoss: "5%",
-    minTradingDays: "3 days",
+    noviceProfit: `₹${noviceProfit.toLocaleString('en-IN')} (10%)`,
+    expertProfit: `₹${expertProfit.toLocaleString('en-IN')} (8%)`,
+    noviceMaxLoss: "8%",
+    expertMaxLoss: "6%",
+    masterMaxLoss: "5%",
+    noviceMaxDailyLoss: "5%",
+    expertMaxDailyLoss: "4%",
+    masterMaxDailyLoss: "3%",
+    minTradingDays: "7 days",
+    maxTradingDays: "3 months",
   }
 
   const testimonials = [
@@ -171,93 +178,118 @@ export default function ChallengeEvaluator() {
           <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
             <div className={`${selectedStep === "2step" ? "min-w-[700px]" : "min-w-[550px]"} sm:min-w-0`}>
               {/* Header Row */}
-              <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 mb-6 sm:mb-8`}>
+              <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(1,1fr)]"} gap-3 sm:gap-4 mb-6 sm:mb-8`}>
                 <div></div>
-                {/* Student Column */}
-                <div className="text-center px-2">
-                  <div className="mb-2 sm:mb-4">
-                    <div className="inline-flex h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-white/20 text-white text-sm sm:text-base md:text-lg font-bold">
-                      1
-                    </div>
-                  </div>
-                  <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-6">{t.challenge.student}</h4>
-                </div>
-
-                {/* Practitioner Column - Only for 2 step */}
+                {/* Novice Column - Only for 2 step */}
                 {selectedStep === "2step" && (
                   <div className="text-center px-2">
                     <div className="mb-2 sm:mb-4">
                       <div className="inline-flex h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-white/20 text-white text-sm sm:text-base md:text-lg font-bold">
-                        2
+                        1
                       </div>
                     </div>
-                    <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-6">{t.challenge.practitioner}</h4>
+                    <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-6">Novice</h4>
                   </div>
                 )}
 
-                {/* Master Column */}
+                {/* Expert Column */}
                 <div className="text-center px-2">
                   <div className="mb-2 sm:mb-4">
-                    <div className="inline-flex h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-white/20 text-primary-foreground">
-                      <Crown className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
+                    <div className="inline-flex h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-white/20 text-white text-sm sm:text-base md:text-lg font-bold">
+                      {selectedStep === "2step" ? "2" : "1"}
                     </div>
                   </div>
-                  <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-6">{t.challenge.master}</h4>
+                  <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-6">Expert</h4>
                 </div>
+
+                {/* Master Column - Only for 2 step */}
+                {selectedStep === "2step" && (
+                  <div className="text-center px-2">
+                    <div className="mb-2 sm:mb-4">
+                      <div className="inline-flex h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 items-center justify-center rounded-full bg-white/20 text-primary-foreground">
+                        <Crown className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" />
+                      </div>
+                    </div>
+                    <h4 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 sm:mb-6">{t.challenge.master}</h4>
+                  </div>
+                )}
               </div>
 
           {/* Evaluation Rows */}
           <div className="space-y-3 sm:space-y-4">
             {/* Profit Target */}
-            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
+            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(1,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
               <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
                 <span className="truncate">{t.challenge.profitTarget}</span>
                 <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
               </div>
-              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.studentProfit}</div>
               {selectedStep === "2step" && (
-                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.practitionerProfit}</div>
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.noviceProfit}</div>
               )}
-              <div className="text-center text-white text-sm md:text-base font-semibold px-2">-</div>
+              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.expertProfit}</div>
+              {selectedStep === "2step" && (
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">-</div>
+              )}
             </div>
 
             {/* Maximum Loss */}
-            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
+            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(1,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
               <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
                 <span className="truncate">{t.challenge.maximumLoss}</span>
                 <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
               </div>
-              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxLoss}</div>
               {selectedStep === "2step" && (
-                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxLoss}</div>
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.noviceMaxLoss}</div>
               )}
-              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxLoss}</div>
+              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.expertMaxLoss}</div>
+              {selectedStep === "2step" && (
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.masterMaxLoss}</div>
+              )}
             </div>
 
             {/* Maximum Daily Loss */}
-            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
+            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(1,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
               <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
                 <span className="truncate">{t.challenge.maximumDailyLoss}</span>
                 <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
               </div>
-              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxDailyLoss}</div>
               {selectedStep === "2step" && (
-                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxDailyLoss}</div>
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.noviceMaxDailyLoss}</div>
               )}
-              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxDailyLoss}</div>
+              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.expertMaxDailyLoss}</div>
+              {selectedStep === "2step" && (
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.masterMaxDailyLoss}</div>
+              )}
             </div>
 
             {/* Minimum Trading Days */}
-            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(2,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
+            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(1,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
               <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
                 <span className="truncate">{t.challenge.minimumTradingDays}</span>
                 <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
               </div>
-              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.minTradingDays}</div>
               {selectedStep === "2step" && (
                 <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.minTradingDays}</div>
               )}
-              <div className="text-center text-white text-sm md:text-base font-semibold px-2">-</div>
+              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.minTradingDays}</div>
+              {selectedStep === "2step" && (
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">-</div>
+              )}
+            </div>
+
+            {/* Maximum Trading Days */}
+            <div className={`grid ${selectedStep === "2step" ? "grid-cols-[180px_repeat(3,1fr)]" : "grid-cols-[180px_repeat(1,1fr)]"} gap-3 sm:gap-4 items-center bg-white/5 rounded-lg p-3 sm:p-4`}>
+              <div className="text-white text-sm sm:text-sm md:text-base font-medium flex items-center gap-1 sm:gap-2">
+                <span className="truncate">Maximum Trading Days</span>
+                <span className="text-primary-foreground/70 text-xs hidden sm:inline">ⓘ</span>
+              </div>
+              {selectedStep === "2step" && (
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxTradingDays}</div>
+              )}
+              <div className="text-center text-white text-sm md:text-base font-semibold px-2">{evaluationData.maxTradingDays}</div>
+              {selectedStep === "2step" && (
+                <div className="text-center text-white text-sm md:text-base font-semibold px-2">-</div>
+              )}
             </div>
           </div>
             </div>
@@ -273,7 +305,11 @@ export default function ChallengeEvaluator() {
             </div>
             <div className="text-center sm:text-left">
               <span className="text-muted-foreground text-xs sm:text-sm">Price</span>
-              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">₹{(currentPrice / 1000).toFixed(1)}k</p>
+              <p className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary">
+                ₹{currentPrice >= 100000 
+                  ? `${(currentPrice / 100000).toFixed(currentPrice % 100000 === 0 ? 0 : 2)}L` 
+                  : `${(currentPrice / 1000).toFixed(1)}k`}
+              </p>
             </div>
           </div>
 

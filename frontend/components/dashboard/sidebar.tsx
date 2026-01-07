@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { X, Menu } from "lucide-react"
 
 interface SidebarProps {
   menuOpen: boolean
@@ -23,15 +24,33 @@ export default function DashboardSidebar({ menuOpen, setMenuOpen, activeTab, set
         className="fixed top-20 left-4 z-40 md:hidden bg-primary text-primary-foreground p-2 rounded-lg"
         onClick={() => setMenuOpen(!menuOpen)}
       >
-        ☰
+        <Menu className="h-5 w-5" />
       </button>
+
+      {/* Desktop Menu Button - Shows when sidebar is closed */}
+      {!menuOpen && (
+        <button
+          className="fixed top-20 left-4 z-40 hidden md:block bg-primary text-primary-foreground p-2 rounded-lg hover:bg-primary/90 transition-colors"
+          onClick={() => setMenuOpen(true)}
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+      )}
 
       {/* Sidebar */}
       <aside
-        className={`fixed left-0 top-16 w-64 h-[calc(100vh-64px)] bg-card border-r border-border overflow-y-auto transition-transform md:translate-x-0 z-30 ${
+        className={`fixed left-0 top-16 w-64 h-[calc(100vh-64px)] bg-card border-r border-border overflow-y-auto transition-transform z-30 ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
+        {/* Close Button */}
+        <button
+          className="absolute top-2 right-2 p-2 hover:bg-muted rounded-lg transition-colors"
+          onClick={() => setMenuOpen(false)}
+        >
+          <X className="h-5 w-5" />
+        </button>
+
         <div className="p-6">
           {/* Account Info */}
           <div className="mb-8 p-4 bg-muted rounded-lg">

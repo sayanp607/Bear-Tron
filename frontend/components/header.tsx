@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { signOut, useSession } from "next-auth/react"
@@ -28,8 +29,14 @@ export default function Header() {
       <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 font-bold text-lg sm:text-xl">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/80">
-            <span className="text-white font-bold">B</span>
+          <div className="flex !h-16 !w-16 items-center justify-center overflow-hidden !rounded-full">
+            <Image 
+              src="/beartron.png" 
+              alt="BearTron Logo" 
+              width={64} 
+              height={64}
+              className="!h-full !w-full object-contain"
+            />
           </div>
           <span className="hidden sm:inline">BearTron</span>
         </Link>

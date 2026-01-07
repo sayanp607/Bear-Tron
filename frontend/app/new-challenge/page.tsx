@@ -28,7 +28,7 @@ export default function NewChallengePage() {
 
   const [selectedStep, setSelectedStep] = useState<"1step" | "2step">("2step")
   const [selectedSize, setSelectedSize] = useState("10l")
-  const [selectedPlatform, setSelectedPlatform] = useState("metatrader5")
+  const [selectedPlatform, setSelectedPlatform] = useState("zerodha")
   const [agreedToTerms, setAgreedToTerms] = useState(false)
   const [processing, setProcessing] = useState(false)
 
@@ -76,17 +76,19 @@ export default function NewChallengePage() {
   ]
 
   const accountSizes = [
-    { value: "1l", label: "₹1L", amount: 100000, price2step: 2000, price1step: 2500 },
-    { value: "2l", label: "₹2L", amount: 200000, price2step: 3700, price1step: 4200 },
-    { value: "5l", label: "₹5L", amount: 500000, price2step: 7900, price1step: 8400 },
-    { value: "10l", label: "₹10L", amount: 1000000, price2step: 14500, price1step: 15000 },
-    { value: "20l", label: "₹20L", amount: 2000000, price2step: 26000, price1step: 26500 },
+    { value: "50k", label: "₹50k", amount: 50000, price2step: 1700, price1step: 2500 },
+    { value: "1l", label: "₹1L", amount: 100000, price2step: 3000, price1step: 4250 },
+    { value: "2l", label: "₹2L", amount: 200000, price2step: 5800, price1step: 8000 },
+    { value: "5l", label: "₹5L", amount: 500000, price2step: 14000, price1step: 19500 },
+    { value: "10l", label: "₹10L", amount: 1000000, price2step: 28000, price1step: 36000 },
+    { value: "25l", label: "₹25L", amount: 2500000, price2step: 58000, price1step: 86000 },
+    { value: "50l", label: "₹50L", amount: 5000000, price2step: 125000, price1step: 160000 },
   ]
 
   const platforms = [
-    { value: "metatrader5", label: "MetaTrader 5", extraCost: 0 },
-    { value: "matchtrader", label: "MatchTrader", extraCost: 0 },
-    { value: "ctrader", label: "CTrader", extraCost: 2000 },
+    { value: "zerodha", label: "Zerodha", extraCost: 0 },
+    { value: "angelone", label: "Angel One", extraCost: 0 },
+    { value: "5paisa", label: "5 Paisa", extraCost: 0 },
   ]
 
   const selectedAccount = accountSizes.find((acc) => acc.value === selectedSize)
@@ -260,14 +262,14 @@ export default function NewChallengePage() {
                       <RadioGroupItem value="1step" id="1step" />
                       <div>
                         <div className="font-medium">One Step</div>
-                        <div className="text-sm text-muted-foreground">10% Profit Target</div>
+                        <div className="text-sm text-muted-foreground">8% Profit Target</div>
                       </div>
                     </label>
                     <label className={`flex items-center space-x-3 border-2 rounded-lg p-4 cursor-pointer transition-all ${selectedStep === "2step" ? "border-primary bg-primary/5 dark:bg-primary/10" : "border-border"}`}>
                       <RadioGroupItem value="2step" id="2step" />
                       <div>
                         <div className="font-medium">Two Step</div>
-                        <div className="text-sm text-muted-foreground">8% + 5% Targets</div>
+                        <div className="text-sm text-muted-foreground">10% + 8% Targets</div>
                       </div>
                     </label>
                   </div>
@@ -439,7 +441,11 @@ export default function NewChallengePage() {
                     <span className="text-muted-foreground">
                       {selectedAccount?.label} — {selectedStep === "1step" ? "One Step" : "Two Step"} BearTron
                     </span>
-                    <span className="font-medium">₹{(basePrice / 1000).toFixed(1)}k</span>
+                    <span className="font-medium">
+                      ₹{basePrice >= 100000 
+                        ? `${(basePrice / 100000).toFixed(basePrice % 100000 === 0 ? 0 : 2)}L` 
+                        : `${(basePrice / 1000).toFixed(1)}k`}
+                    </span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Platform: {selectedPlatformData?.label}</span>
@@ -449,7 +455,11 @@ export default function NewChallengePage() {
 
                 <div className="flex justify-between items-center mb-6">
                   <span className="text-lg font-semibold">Total</span>
-                  <span className="text-3xl font-bold text-primary">₹{(totalPrice / 1000).toFixed(1)}k</span>
+                  <span className="text-3xl font-bold text-primary">
+                    ₹{totalPrice >= 100000 
+                      ? `${(totalPrice / 100000).toFixed(totalPrice % 100000 === 0 ? 0 : 2)}L` 
+                      : `${(totalPrice / 1000).toFixed(1)}k`}
+                  </span>
                 </div>
 
                 <div className="bg-primary/5 dark:bg-primary/10 rounded-lg p-4 mb-6">

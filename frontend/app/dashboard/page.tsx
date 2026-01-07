@@ -10,7 +10,7 @@ import TradingHistory from "@/components/dashboard/trading-history"
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState("overview")
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(true)
 
   return (
     <div className="min-h-screen bg-background">
